@@ -1,6 +1,9 @@
 package tn.cnrps.ws.rest.crud.endpoint;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +27,11 @@ public class StudentRest {
 		return service.getSutudentById(id);
 	}
 	
+	@GetMapping()
+	public List<Student> getStudents() {
+		return service.getSutudents();
+	}
+	
 	@PostMapping()
 	public Student createStudent(@RequestBody Student std) {
 		return service.addStudent(std);
@@ -31,7 +39,12 @@ public class StudentRest {
 	
 	@PutMapping("/id/{id}")
 	public Student updateStudent(@PathVariable("id")int id,@RequestBody Student newStd) {
-		/// complete 
+		return service.updateStudent(id, newStd) ;
+	}
+	
+	@DeleteMapping("/id/{id}")
+	public Student deleteStudent(@PathVariable("id")int id) {
+		return service.deleteStudent(id) ;
 	}
 
 }
