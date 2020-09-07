@@ -1,5 +1,7 @@
 package tn.cnrps.ws.rest.crud.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,15 @@ public class StudentService {
 		}
 		
 		return null;
+	}
+	
+	public Student addStudent(Student std) {
+		List<Student> students = repos.getStudents();
+		int id = students.get(students.size()-1).getId();
+		
+		std.setId(id+1);
+		students.add(std);
+		return std;
 	}
 
 }
