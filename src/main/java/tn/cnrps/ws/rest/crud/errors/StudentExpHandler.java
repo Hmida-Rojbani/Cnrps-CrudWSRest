@@ -17,5 +17,11 @@ public class StudentExpHandler {
 	public ResponseEntity<ErrorResponse>   StudentNumberFormatExceptionHandler(NumberFormatException e) {
 		return new ResponseEntity<>(new ErrorResponse("Cannot convert to ID (int)",e.getMessage()), HttpStatus.BAD_REQUEST);
 	}
+	
+	
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<ErrorResponse>   StudentExceptionHandler(Exception e) {
+		return new ResponseEntity<>(new ErrorResponse("Error","Error"), HttpStatus.BAD_REQUEST);
+	}
 
 }

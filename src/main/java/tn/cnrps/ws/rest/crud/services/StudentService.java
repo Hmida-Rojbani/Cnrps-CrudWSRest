@@ -16,6 +16,7 @@ public class StudentService {
 	private StudentRepos repos;
 	
 	public Student getSutudentById(int id) {
+		if(id==0) throw new NullPointerException();
 		for (Student student : repos.getStudents()) {
 			if(student.getId()==id)
 				return student;
