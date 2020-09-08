@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.cnrps.ws.rest.crud.errors.StudentNotFoundException;
 import tn.cnrps.ws.rest.crud.models.Student;
 import tn.cnrps.ws.rest.crud.repos.StudentRepos;
 
@@ -19,8 +20,7 @@ public class StudentService {
 			if(student.getId()==id)
 				return student;
 		}
-		
-		return null;
+		throw new StudentNotFoundException("The given id not found in the system");
 	}
 	
 	public List<Student> getSutudents() {
