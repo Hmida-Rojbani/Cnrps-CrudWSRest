@@ -3,6 +3,7 @@ package tn.cnrps.ws.rest.crud.endpoint;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +23,8 @@ public class StudentRest {
 	@Autowired
 	private StudentService service;
 	
-	@GetMapping("/id/{id}")
+	@GetMapping(path="/id/{id}", produces = {MediaType.APPLICATION_JSON_VALUE,
+											 MediaType.APPLICATION_XML_VALUE})
 	public Student getStudentWithId(@PathVariable("id")int id) {
 		return service.getSutudentById(id);
 	}
@@ -32,7 +34,10 @@ public class StudentRest {
 		return service.getSutudents();
 	}
 	
-	@PostMapping()
+	@PostMapping(produces = {MediaType.APPLICATION_JSON_VALUE,
+			 MediaType.APPLICATION_XML_VALUE},
+			consumes = {MediaType.APPLICATION_JSON_VALUE,
+					 MediaType.APPLICATION_XML_VALUE})
 	public Student createStudent(@RequestBody Student std) {
 		return service.addStudent(std);
 	}
