@@ -2,6 +2,8 @@ package tn.cnrps.ws.rest.crud.endpoint;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,12 +40,12 @@ public class StudentRest {
 			 MediaType.APPLICATION_XML_VALUE},
 			consumes = {MediaType.APPLICATION_JSON_VALUE,
 					 MediaType.APPLICATION_XML_VALUE})
-	public Student createStudent(@RequestBody Student std) {
+	public Student createStudent(@Valid@RequestBody Student std) {
 		return service.addStudent(std);
 	}
 	
 	@PutMapping("/id/{id}")
-	public Student updateStudent(@PathVariable("id")int id,@RequestBody Student newStd) {
+	public Student updateStudent(@PathVariable("id")int id,@Valid@RequestBody Student newStd) {
 		return service.updateStudent(id, newStd) ;
 	}
 	
