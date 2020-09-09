@@ -1,5 +1,6 @@
 package tn.cnrps.ws.rest.crud.config;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,5 +23,10 @@ public class SwaggerConfig {
           .paths(PathSelectors.any())  
           .build();                                           
     }
+	
+	@Bean
+	public ModelMapper getModelMapper() {
+		return new ModelMapper();
+	}
 
 }

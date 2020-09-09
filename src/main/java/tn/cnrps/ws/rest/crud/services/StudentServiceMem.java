@@ -9,8 +9,8 @@ import tn.cnrps.ws.rest.crud.errors.StudentNotFoundException;
 import tn.cnrps.ws.rest.crud.models.Student;
 import tn.cnrps.ws.rest.crud.repos.StudentRepos;
 
-@Service
-public class StudentService {
+
+public class StudentServiceMem implements StudentServiceInter{
 	
 	@Autowired
 	private StudentRepos repos;

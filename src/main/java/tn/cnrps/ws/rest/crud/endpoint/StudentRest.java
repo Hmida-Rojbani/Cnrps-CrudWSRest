@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.cnrps.ws.rest.crud.models.Student;
-import tn.cnrps.ws.rest.crud.services.StudentService;
+import tn.cnrps.ws.rest.crud.services.StudentServiceInter;
 
 @RestController
 @RequestMapping("/api/students")
 public class StudentRest {
 	
 	@Autowired
-	private StudentService service;
+	private StudentServiceInter service;
 	
 	@GetMapping(path="/id/{id}", produces = {MediaType.APPLICATION_JSON_VALUE,
 											 MediaType.APPLICATION_XML_VALUE})
